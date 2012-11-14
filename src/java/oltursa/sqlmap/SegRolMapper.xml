@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="oltursa.dao.SegRolMapper" >
+  <resultMap id="BaseResultMap" type="oltursa.model.SegRol" >
+    <id column="co_sistema" property="co_sistema" jdbcType="CHAR" />
+    <id column="co_rol" property="co_rol" jdbcType="CHAR" />
+    <result column="de_rol" property="de_rol" jdbcType="VARCHAR" />
+    <result column="fe_creacion" property="fe_creacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuariocreacion" property="co_usuariocreacion" jdbcType="VARCHAR" />
+    <result column="fe_modificacion" property="fe_modificacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuariomodificacion" property="co_usuariomodificacion" jdbcType="VARCHAR" />
+    <result column="fe_eliminacion" property="fe_eliminacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuarioeliminacion" property="co_usuarioeliminacion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    co_sistema, co_rol, de_rol, fe_creacion, co_usuariocreacion, fe_modificacion, co_usuariomodificacion, 
+    fe_eliminacion, co_usuarioeliminacion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Seg_Rol
+    where co_sistema = #{co_sistema,jdbcType=CHAR}
+      and co_rol = #{co_rol,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from Seg_Rol
+    where co_sistema = #{co_sistema,jdbcType=CHAR}
+      and co_rol = #{co_rol,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="oltursa.model.SegRol" >
+    insert into Seg_Rol (co_sistema, co_rol, de_rol, 
+      fe_creacion, co_usuariocreacion, fe_modificacion, 
+      co_usuariomodificacion, fe_eliminacion, 
+      co_usuarioeliminacion)
+    values (#{co_sistema,jdbcType=CHAR}, #{co_rol,jdbcType=CHAR}, #{de_rol,jdbcType=VARCHAR}, 
+      #{fe_creacion,jdbcType=TIMESTAMP}, #{co_usuariocreacion,jdbcType=VARCHAR}, #{fe_modificacion,jdbcType=TIMESTAMP}, 
+      #{co_usuariomodificacion,jdbcType=VARCHAR}, #{fe_eliminacion,jdbcType=TIMESTAMP}, 
+      #{co_usuarioeliminacion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="oltursa.model.SegRol" >
+    insert into Seg_Rol
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="co_sistema != null" >
+        co_sistema,
+      </if>
+      <if test="co_rol != null" >
+        co_rol,
+      </if>
+      <if test="de_rol != null" >
+        de_rol,
+      </if>
+      <if test="fe_creacion != null" >
+        fe_creacion,
+      </if>
+      <if test="co_usuariocreacion != null" >
+        co_usuariocreacion,
+      </if>
+      <if test="fe_modificacion != null" >
+        fe_modificacion,
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        co_usuariomodificacion,
+      </if>
+      <if test="fe_eliminacion != null" >
+        fe_eliminacion,
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        co_usuarioeliminacion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="co_sistema != null" >
+        #{co_sistema,jdbcType=CHAR},
+      </if>
+      <if test="co_rol != null" >
+        #{co_rol,jdbcType=CHAR},
+      </if>
+      <if test="de_rol != null" >
+        #{de_rol,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_creacion != null" >
+        #{fe_creacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariocreacion != null" >
+        #{co_usuariocreacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_modificacion != null" >
+        #{fe_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        #{co_usuariomodificacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_eliminacion != null" >
+        #{fe_eliminacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        #{co_usuarioeliminacion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="oltursa.model.SegRol" >
+    update Seg_Rol
+    <set >
+      <if test="de_rol != null" >
+        de_rol = #{de_rol,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_creacion != null" >
+        fe_creacion = #{fe_creacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariocreacion != null" >
+        co_usuariocreacion = #{co_usuariocreacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_modificacion != null" >
+        fe_modificacion = #{fe_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        co_usuariomodificacion = #{co_usuariomodificacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_eliminacion != null" >
+        fe_eliminacion = #{fe_eliminacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        co_usuarioeliminacion = #{co_usuarioeliminacion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where co_sistema = #{co_sistema,jdbcType=CHAR}
+      and co_rol = #{co_rol,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="oltursa.model.SegRol" >
+    update Seg_Rol
+    set de_rol = #{de_rol,jdbcType=VARCHAR},
+      fe_creacion = #{fe_creacion,jdbcType=TIMESTAMP},
+      co_usuariocreacion = #{co_usuariocreacion,jdbcType=VARCHAR},
+      fe_modificacion = #{fe_modificacion,jdbcType=TIMESTAMP},
+      co_usuariomodificacion = #{co_usuariomodificacion,jdbcType=VARCHAR},
+      fe_eliminacion = #{fe_eliminacion,jdbcType=TIMESTAMP},
+      co_usuarioeliminacion = #{co_usuarioeliminacion,jdbcType=VARCHAR}
+    where co_sistema = #{co_sistema,jdbcType=CHAR}
+      and co_rol = #{co_rol,jdbcType=CHAR}
+  </update>
+</mapper>

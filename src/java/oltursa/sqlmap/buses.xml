@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="oltursa.dao.buses" >
+  <resultMap id="BaseResultMap" type="oltursa.model.Buses" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Nombre" property="nombre" jdbcType="VARCHAR" />
+    <result column="Matricula" property="matricula" jdbcType="VARCHAR" />
+    <result column="Empresa" property="empresa" jdbcType="SMALLINT" />
+    <result column="Butacas" property="butacas" jdbcType="SMALLINT" />
+    <result column="Modelo" property="modelo" jdbcType="VARCHAR" />
+    <result column="Anio" property="anio" jdbcType="VARCHAR" />
+    <result column="Estado" property="estado" jdbcType="TINYINT" />
+    <result column="KMSTotales" property="KMSTotales" jdbcType="DOUBLE" />
+    <result column="CodigoMarca" property="codigoMarca" jdbcType="CHAR" />
+    <result column="NombreMarca" property="nombreMarca" jdbcType="CHAR" />
+    <result column="NumeroHabilitacion" property="numeroHabilitacion" jdbcType="VARCHAR" />
+    <result column="FechaHabilitacion" property="fechaHabilitacion" jdbcType="TIMESTAMP" />
+    <result column="NumeroHabilitacionProv" property="numeroHabilitacionProv" jdbcType="VARCHAR" />
+    <result column="FechaHabilitacionProv" property="fechaHabilitacionProv" jdbcType="TIMESTAMP" />
+    <result column="Responsable" property="responsable" jdbcType="VARCHAR" />
+    <result column="MotorNro" property="motorNro" jdbcType="VARCHAR" />
+    <result column="MotorMarca" property="motorMarca" jdbcType="VARCHAR" />
+    <result column="TipoLinea" property="tipoLinea" jdbcType="TINYINT" />
+    <result column="CarroceriaModelo" property="carroceriaModelo" jdbcType="VARCHAR" />
+    <result column="CarroceriaChasis" property="carroceriaChasis" jdbcType="VARCHAR" />
+    <result column="TacografoMarca" property="tacografoMarca" jdbcType="VARCHAR" />
+    <result column="TacografoNumero" property="tacografoNumero" jdbcType="VARCHAR" />
+    <result column="CarroceriaCapacidad" property="carroceriaCapacidad" jdbcType="VARCHAR" />
+    <result column="MatriculaPais" property="matriculaPais" jdbcType="SMALLINT" />
+  </resultMap>
+  <insert id="insert" parameterType="oltursa.model.Buses" >
+    insert into Buses (Id, Nombre, Matricula, 
+      Empresa, Butacas, Modelo, 
+      Anio, Estado, KMSTotales, 
+      CodigoMarca, NombreMarca, NumeroHabilitacion, 
+      FechaHabilitacion, NumeroHabilitacionProv, 
+      FechaHabilitacionProv, Responsable, MotorNro, 
+      MotorMarca, TipoLinea, CarroceriaModelo, 
+      CarroceriaChasis, TacografoMarca, TacografoNumero, 
+      CarroceriaCapacidad, MatriculaPais)
+    values (#{id,jdbcType=INTEGER}, #{nombre,jdbcType=VARCHAR}, #{matricula,jdbcType=VARCHAR}, 
+      #{empresa,jdbcType=SMALLINT}, #{butacas,jdbcType=SMALLINT}, #{modelo,jdbcType=VARCHAR}, 
+      #{anio,jdbcType=VARCHAR}, #{estado,jdbcType=TINYINT}, #{KMSTotales,jdbcType=DOUBLE}, 
+      #{codigoMarca,jdbcType=CHAR}, #{nombreMarca,jdbcType=CHAR}, #{numeroHabilitacion,jdbcType=VARCHAR}, 
+      #{fechaHabilitacion,jdbcType=TIMESTAMP}, #{numeroHabilitacionProv,jdbcType=VARCHAR}, 
+      #{fechaHabilitacionProv,jdbcType=TIMESTAMP}, #{responsable,jdbcType=VARCHAR}, #{motorNro,jdbcType=VARCHAR}, 
+      #{motorMarca,jdbcType=VARCHAR}, #{tipoLinea,jdbcType=TINYINT}, #{carroceriaModelo,jdbcType=VARCHAR}, 
+      #{carroceriaChasis,jdbcType=VARCHAR}, #{tacografoMarca,jdbcType=VARCHAR}, #{tacografoNumero,jdbcType=VARCHAR}, 
+      #{carroceriaCapacidad,jdbcType=VARCHAR}, #{matriculaPais,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="oltursa.model.Buses" >
+    insert into Buses
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="nombre != null" >
+        Nombre,
+      </if>
+      <if test="matricula != null" >
+        Matricula,
+      </if>
+      <if test="empresa != null" >
+        Empresa,
+      </if>
+      <if test="butacas != null" >
+        Butacas,
+      </if>
+      <if test="modelo != null" >
+        Modelo,
+      </if>
+      <if test="anio != null" >
+        Anio,
+      </if>
+      <if test="estado != null" >
+        Estado,
+      </if>
+      <if test="KMSTotales != null" >
+        KMSTotales,
+      </if>
+      <if test="codigoMarca != null" >
+        CodigoMarca,
+      </if>
+      <if test="nombreMarca != null" >
+        NombreMarca,
+      </if>
+      <if test="numeroHabilitacion != null" >
+        NumeroHabilitacion,
+      </if>
+      <if test="fechaHabilitacion != null" >
+        FechaHabilitacion,
+      </if>
+      <if test="numeroHabilitacionProv != null" >
+        NumeroHabilitacionProv,
+      </if>
+      <if test="fechaHabilitacionProv != null" >
+        FechaHabilitacionProv,
+      </if>
+      <if test="responsable != null" >
+        Responsable,
+      </if>
+      <if test="motorNro != null" >
+        MotorNro,
+      </if>
+      <if test="motorMarca != null" >
+        MotorMarca,
+      </if>
+      <if test="tipoLinea != null" >
+        TipoLinea,
+      </if>
+      <if test="carroceriaModelo != null" >
+        CarroceriaModelo,
+      </if>
+      <if test="carroceriaChasis != null" >
+        CarroceriaChasis,
+      </if>
+      <if test="tacografoMarca != null" >
+        TacografoMarca,
+      </if>
+      <if test="tacografoNumero != null" >
+        TacografoNumero,
+      </if>
+      <if test="carroceriaCapacidad != null" >
+        CarroceriaCapacidad,
+      </if>
+      <if test="matriculaPais != null" >
+        MatriculaPais,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nombre != null" >
+        #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="matricula != null" >
+        #{matricula,jdbcType=VARCHAR},
+      </if>
+      <if test="empresa != null" >
+        #{empresa,jdbcType=SMALLINT},
+      </if>
+      <if test="butacas != null" >
+        #{butacas,jdbcType=SMALLINT},
+      </if>
+      <if test="modelo != null" >
+        #{modelo,jdbcType=VARCHAR},
+      </if>
+      <if test="anio != null" >
+        #{anio,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=TINYINT},
+      </if>
+      <if test="KMSTotales != null" >
+        #{KMSTotales,jdbcType=DOUBLE},
+      </if>
+      <if test="codigoMarca != null" >
+        #{codigoMarca,jdbcType=CHAR},
+      </if>
+      <if test="nombreMarca != null" >
+        #{nombreMarca,jdbcType=CHAR},
+      </if>
+      <if test="numeroHabilitacion != null" >
+        #{numeroHabilitacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaHabilitacion != null" >
+        #{fechaHabilitacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="numeroHabilitacionProv != null" >
+        #{numeroHabilitacionProv,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaHabilitacionProv != null" >
+        #{fechaHabilitacionProv,jdbcType=TIMESTAMP},
+      </if>
+      <if test="responsable != null" >
+        #{responsable,jdbcType=VARCHAR},
+      </if>
+      <if test="motorNro != null" >
+        #{motorNro,jdbcType=VARCHAR},
+      </if>
+      <if test="motorMarca != null" >
+        #{motorMarca,jdbcType=VARCHAR},
+      </if>
+      <if test="tipoLinea != null" >
+        #{tipoLinea,jdbcType=TINYINT},
+      </if>
+      <if test="carroceriaModelo != null" >
+        #{carroceriaModelo,jdbcType=VARCHAR},
+      </if>
+      <if test="carroceriaChasis != null" >
+        #{carroceriaChasis,jdbcType=VARCHAR},
+      </if>
+      <if test="tacografoMarca != null" >
+        #{tacografoMarca,jdbcType=VARCHAR},
+      </if>
+      <if test="tacografoNumero != null" >
+        #{tacografoNumero,jdbcType=VARCHAR},
+      </if>
+      <if test="carroceriaCapacidad != null" >
+        #{carroceriaCapacidad,jdbcType=VARCHAR},
+      </if>
+      <if test="matriculaPais != null" >
+        #{matriculaPais,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

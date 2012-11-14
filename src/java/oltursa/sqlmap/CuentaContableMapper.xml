@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="oltursa.dao.CuentaContableMapper" >
+  <resultMap id="BaseResultMap" type="oltursa.model.CuentaContable" >
+    <result column="CUENTA_CONTABLE" property="CUENTA_CONTABLE" jdbcType="VARCHAR" />
+    <result column="SECCION_CUENTA" property="SECCION_CUENTA" jdbcType="VARCHAR" />
+    <result column="UNIDAD" property="UNIDAD" jdbcType="VARCHAR" />
+    <result column="DESCRIPCION" property="DESCRIPCION" jdbcType="VARCHAR" />
+    <result column="TIPO" property="TIPO" jdbcType="VARCHAR" />
+    <result column="TIPO_DETALLADO" property="TIPO_DETALLADO" jdbcType="VARCHAR" />
+    <result column="TIPO_OAF" property="TIPO_OAF" jdbcType="VARCHAR" />
+    <result column="SALDO_NORMAL" property="SALDO_NORMAL" jdbcType="VARCHAR" />
+    <result column="CONVERSION" property="CONVERSION" jdbcType="VARCHAR" />
+    <result column="TIPO_CAMBIO" property="TIPO_CAMBIO" jdbcType="VARCHAR" />
+    <result column="ACEPTA_DATOS" property="ACEPTA_DATOS" jdbcType="VARCHAR" />
+    <result column="CONSOLIDA" property="CONSOLIDA" jdbcType="VARCHAR" />
+    <result column="USA_CENTRO_COSTO" property="USA_CENTRO_COSTO" jdbcType="VARCHAR" />
+    <result column="USUARIO" property="USUARIO" jdbcType="VARCHAR" />
+    <result column="FECHA_HORA" property="FECHA_HORA" jdbcType="TIMESTAMP" />
+    <result column="USUARIO_ULT_MOD" property="USUARIO_ULT_MOD" jdbcType="VARCHAR" />
+    <result column="FCH_HORA_ULT_MOD" property="FCH_HORA_ULT_MOD" jdbcType="TIMESTAMP" />
+    <result column="ACEPTA_UNIDADES" property="ACEPTA_UNIDADES" jdbcType="VARCHAR" />
+    <result column="USO_RESTRINGIDO" property="USO_RESTRINGIDO" jdbcType="VARCHAR" />
+    <result column="ORIGEN_CONVERSION" property="ORIGEN_CONVERSION" jdbcType="VARCHAR" />
+    <result column="NoteExistsFlag" property="noteExistsFlag" jdbcType="TINYINT" />
+    <result column="RecordDate" property="recordDate" jdbcType="TIMESTAMP" />
+    <result column="RowPointer" property="rowPointer" jdbcType="CHAR" />
+    <result column="CreatedBy" property="createdBy" jdbcType="VARCHAR" />
+    <result column="UpdatedBy" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="INCLUIR_REP_CP" property="INCLUIR_REP_CP" jdbcType="VARCHAR" />
+    <result column="INCLUIR_REP_CC" property="INCLUIR_REP_CC" jdbcType="VARCHAR" />
+    <result column="INCLUIR_REP_CB" property="INCLUIR_REP_CB" jdbcType="VARCHAR" />
+    <result column="ENTIDAD_FINANCIERA_CB" property="ENTIDAD_FINANCIERA_CB" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="oltursa.model.CuentaContable" extends="BaseResultMap" >
+    <result column="NOTAS" property="NOTAS" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    NOTAS
+  </sql>
+  <insert id="insert" parameterType="oltursa.model.CuentaContable" >
+    insert into CUENTA_CONTABLE (CUENTA_CONTABLE, SECCION_CUENTA, 
+      UNIDAD, DESCRIPCION, TIPO, 
+      TIPO_DETALLADO, TIPO_OAF, SALDO_NORMAL, 
+      CONVERSION, TIPO_CAMBIO, ACEPTA_DATOS, 
+      CONSOLIDA, USA_CENTRO_COSTO, USUARIO, 
+      FECHA_HORA, USUARIO_ULT_MOD, FCH_HORA_ULT_MOD, 
+      ACEPTA_UNIDADES, USO_RESTRINGIDO, ORIGEN_CONVERSION, 
+      NoteExistsFlag, RecordDate, RowPointer, 
+      CreatedBy, UpdatedBy, CreateDate, 
+      INCLUIR_REP_CP, INCLUIR_REP_CC, INCLUIR_REP_CB, 
+      ENTIDAD_FINANCIERA_CB, NOTAS)
+    values (#{CUENTA_CONTABLE,jdbcType=VARCHAR}, #{SECCION_CUENTA,jdbcType=VARCHAR}, 
+      #{UNIDAD,jdbcType=VARCHAR}, #{DESCRIPCION,jdbcType=VARCHAR}, #{TIPO,jdbcType=VARCHAR}, 
+      #{TIPO_DETALLADO,jdbcType=VARCHAR}, #{TIPO_OAF,jdbcType=VARCHAR}, #{SALDO_NORMAL,jdbcType=VARCHAR}, 
+      #{CONVERSION,jdbcType=VARCHAR}, #{TIPO_CAMBIO,jdbcType=VARCHAR}, #{ACEPTA_DATOS,jdbcType=VARCHAR}, 
+      #{CONSOLIDA,jdbcType=VARCHAR}, #{USA_CENTRO_COSTO,jdbcType=VARCHAR}, #{USUARIO,jdbcType=VARCHAR}, 
+      #{FECHA_HORA,jdbcType=TIMESTAMP}, #{USUARIO_ULT_MOD,jdbcType=VARCHAR}, #{FCH_HORA_ULT_MOD,jdbcType=TIMESTAMP}, 
+      #{ACEPTA_UNIDADES,jdbcType=VARCHAR}, #{USO_RESTRINGIDO,jdbcType=VARCHAR}, #{ORIGEN_CONVERSION,jdbcType=VARCHAR}, 
+      #{noteExistsFlag,jdbcType=TINYINT}, #{recordDate,jdbcType=TIMESTAMP}, #{rowPointer,jdbcType=CHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{updatedBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{INCLUIR_REP_CP,jdbcType=VARCHAR}, #{INCLUIR_REP_CC,jdbcType=VARCHAR}, #{INCLUIR_REP_CB,jdbcType=VARCHAR}, 
+      #{ENTIDAD_FINANCIERA_CB,jdbcType=VARCHAR}, #{NOTAS,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="oltursa.model.CuentaContable" >
+    insert into CUENTA_CONTABLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="CUENTA_CONTABLE != null" >
+        CUENTA_CONTABLE,
+      </if>
+      <if test="SECCION_CUENTA != null" >
+        SECCION_CUENTA,
+      </if>
+      <if test="UNIDAD != null" >
+        UNIDAD,
+      </if>
+      <if test="DESCRIPCION != null" >
+        DESCRIPCION,
+      </if>
+      <if test="TIPO != null" >
+        TIPO,
+      </if>
+      <if test="TIPO_DETALLADO != null" >
+        TIPO_DETALLADO,
+      </if>
+      <if test="TIPO_OAF != null" >
+        TIPO_OAF,
+      </if>
+      <if test="SALDO_NORMAL != null" >
+        SALDO_NORMAL,
+      </if>
+      <if test="CONVERSION != null" >
+        CONVERSION,
+      </if>
+      <if test="TIPO_CAMBIO != null" >
+        TIPO_CAMBIO,
+      </if>
+      <if test="ACEPTA_DATOS != null" >
+        ACEPTA_DATOS,
+      </if>
+      <if test="CONSOLIDA != null" >
+        CONSOLIDA,
+      </if>
+      <if test="USA_CENTRO_COSTO != null" >
+        USA_CENTRO_COSTO,
+      </if>
+      <if test="USUARIO != null" >
+        USUARIO,
+      </if>
+      <if test="FECHA_HORA != null" >
+        FECHA_HORA,
+      </if>
+      <if test="USUARIO_ULT_MOD != null" >
+        USUARIO_ULT_MOD,
+      </if>
+      <if test="FCH_HORA_ULT_MOD != null" >
+        FCH_HORA_ULT_MOD,
+      </if>
+      <if test="ACEPTA_UNIDADES != null" >
+        ACEPTA_UNIDADES,
+      </if>
+      <if test="USO_RESTRINGIDO != null" >
+        USO_RESTRINGIDO,
+      </if>
+      <if test="ORIGEN_CONVERSION != null" >
+        ORIGEN_CONVERSION,
+      </if>
+      <if test="noteExistsFlag != null" >
+        NoteExistsFlag,
+      </if>
+      <if test="recordDate != null" >
+        RecordDate,
+      </if>
+      <if test="rowPointer != null" >
+        RowPointer,
+      </if>
+      <if test="createdBy != null" >
+        CreatedBy,
+      </if>
+      <if test="updatedBy != null" >
+        UpdatedBy,
+      </if>
+      <if test="createDate != null" >
+        CreateDate,
+      </if>
+      <if test="INCLUIR_REP_CP != null" >
+        INCLUIR_REP_CP,
+      </if>
+      <if test="INCLUIR_REP_CC != null" >
+        INCLUIR_REP_CC,
+      </if>
+      <if test="INCLUIR_REP_CB != null" >
+        INCLUIR_REP_CB,
+      </if>
+      <if test="ENTIDAD_FINANCIERA_CB != null" >
+        ENTIDAD_FINANCIERA_CB,
+      </if>
+      <if test="NOTAS != null" >
+        NOTAS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="CUENTA_CONTABLE != null" >
+        #{CUENTA_CONTABLE,jdbcType=VARCHAR},
+      </if>
+      <if test="SECCION_CUENTA != null" >
+        #{SECCION_CUENTA,jdbcType=VARCHAR},
+      </if>
+      <if test="UNIDAD != null" >
+        #{UNIDAD,jdbcType=VARCHAR},
+      </if>
+      <if test="DESCRIPCION != null" >
+        #{DESCRIPCION,jdbcType=VARCHAR},
+      </if>
+      <if test="TIPO != null" >
+        #{TIPO,jdbcType=VARCHAR},
+      </if>
+      <if test="TIPO_DETALLADO != null" >
+        #{TIPO_DETALLADO,jdbcType=VARCHAR},
+      </if>
+      <if test="TIPO_OAF != null" >
+        #{TIPO_OAF,jdbcType=VARCHAR},
+      </if>
+      <if test="SALDO_NORMAL != null" >
+        #{SALDO_NORMAL,jdbcType=VARCHAR},
+      </if>
+      <if test="CONVERSION != null" >
+        #{CONVERSION,jdbcType=VARCHAR},
+      </if>
+      <if test="TIPO_CAMBIO != null" >
+        #{TIPO_CAMBIO,jdbcType=VARCHAR},
+      </if>
+      <if test="ACEPTA_DATOS != null" >
+        #{ACEPTA_DATOS,jdbcType=VARCHAR},
+      </if>
+      <if test="CONSOLIDA != null" >
+        #{CONSOLIDA,jdbcType=VARCHAR},
+      </if>
+      <if test="USA_CENTRO_COSTO != null" >
+        #{USA_CENTRO_COSTO,jdbcType=VARCHAR},
+      </if>
+      <if test="USUARIO != null" >
+        #{USUARIO,jdbcType=VARCHAR},
+      </if>
+      <if test="FECHA_HORA != null" >
+        #{FECHA_HORA,jdbcType=TIMESTAMP},
+      </if>
+      <if test="USUARIO_ULT_MOD != null" >
+        #{USUARIO_ULT_MOD,jdbcType=VARCHAR},
+      </if>
+      <if test="FCH_HORA_ULT_MOD != null" >
+        #{FCH_HORA_ULT_MOD,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ACEPTA_UNIDADES != null" >
+        #{ACEPTA_UNIDADES,jdbcType=VARCHAR},
+      </if>
+      <if test="USO_RESTRINGIDO != null" >
+        #{USO_RESTRINGIDO,jdbcType=VARCHAR},
+      </if>
+      <if test="ORIGEN_CONVERSION != null" >
+        #{ORIGEN_CONVERSION,jdbcType=VARCHAR},
+      </if>
+      <if test="noteExistsFlag != null" >
+        #{noteExistsFlag,jdbcType=TINYINT},
+      </if>
+      <if test="recordDate != null" >
+        #{recordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowPointer != null" >
+        #{rowPointer,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="INCLUIR_REP_CP != null" >
+        #{INCLUIR_REP_CP,jdbcType=VARCHAR},
+      </if>
+      <if test="INCLUIR_REP_CC != null" >
+        #{INCLUIR_REP_CC,jdbcType=VARCHAR},
+      </if>
+      <if test="INCLUIR_REP_CB != null" >
+        #{INCLUIR_REP_CB,jdbcType=VARCHAR},
+      </if>
+      <if test="ENTIDAD_FINANCIERA_CB != null" >
+        #{ENTIDAD_FINANCIERA_CB,jdbcType=VARCHAR},
+      </if>
+      <if test="NOTAS != null" >
+        #{NOTAS,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

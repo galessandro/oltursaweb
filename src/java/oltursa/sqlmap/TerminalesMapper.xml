@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="oltursa.dao.TerminalesMapper" >
+  <resultMap id="BaseResultMap" type="oltursa.model.Terminales" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Nombre" property="nombre" jdbcType="VARCHAR" />
+    <result column="Localidad" property="localidad" jdbcType="INTEGER" />
+    <result column="Calle" property="calle" jdbcType="VARCHAR" />
+    <result column="Altura" property="altura" jdbcType="SMALLINT" />
+    <result column="Piso" property="piso" jdbcType="TINYINT" />
+    <result column="Departamento" property="departamento" jdbcType="VARCHAR" />
+    <result column="CodPostal" property="codPostal" jdbcType="VARCHAR" />
+    <result column="Telefonos" property="telefonos" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Predeterminada" property="predeterminada" jdbcType="TINYINT" />
+    <result column="Codigo" property="codigo" jdbcType="VARCHAR" />
+    <result column="Latitud" property="latitud" jdbcType="DOUBLE" />
+    <result column="Longitud" property="longitud" jdbcType="DOUBLE" />
+  </resultMap>
+  <insert id="insert" parameterType="oltursa.model.Terminales" >
+    insert into Terminales (Id, Nombre, Localidad, 
+      Calle, Altura, Piso, 
+      Departamento, CodPostal, Telefonos, 
+      Email, Predeterminada, Codigo, 
+      Latitud, Longitud)
+    values (#{id,jdbcType=INTEGER}, #{nombre,jdbcType=VARCHAR}, #{localidad,jdbcType=INTEGER}, 
+      #{calle,jdbcType=VARCHAR}, #{altura,jdbcType=SMALLINT}, #{piso,jdbcType=TINYINT}, 
+      #{departamento,jdbcType=VARCHAR}, #{codPostal,jdbcType=VARCHAR}, #{telefonos,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{predeterminada,jdbcType=TINYINT}, #{codigo,jdbcType=VARCHAR}, 
+      #{latitud,jdbcType=DOUBLE}, #{longitud,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="oltursa.model.Terminales" >
+    insert into Terminales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="nombre != null" >
+        Nombre,
+      </if>
+      <if test="localidad != null" >
+        Localidad,
+      </if>
+      <if test="calle != null" >
+        Calle,
+      </if>
+      <if test="altura != null" >
+        Altura,
+      </if>
+      <if test="piso != null" >
+        Piso,
+      </if>
+      <if test="departamento != null" >
+        Departamento,
+      </if>
+      <if test="codPostal != null" >
+        CodPostal,
+      </if>
+      <if test="telefonos != null" >
+        Telefonos,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="predeterminada != null" >
+        Predeterminada,
+      </if>
+      <if test="codigo != null" >
+        Codigo,
+      </if>
+      <if test="latitud != null" >
+        Latitud,
+      </if>
+      <if test="longitud != null" >
+        Longitud,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nombre != null" >
+        #{nombre,jdbcType=VARCHAR},
+      </if>
+      <if test="localidad != null" >
+        #{localidad,jdbcType=INTEGER},
+      </if>
+      <if test="calle != null" >
+        #{calle,jdbcType=VARCHAR},
+      </if>
+      <if test="altura != null" >
+        #{altura,jdbcType=SMALLINT},
+      </if>
+      <if test="piso != null" >
+        #{piso,jdbcType=TINYINT},
+      </if>
+      <if test="departamento != null" >
+        #{departamento,jdbcType=VARCHAR},
+      </if>
+      <if test="codPostal != null" >
+        #{codPostal,jdbcType=VARCHAR},
+      </if>
+      <if test="telefonos != null" >
+        #{telefonos,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="predeterminada != null" >
+        #{predeterminada,jdbcType=TINYINT},
+      </if>
+      <if test="codigo != null" >
+        #{codigo,jdbcType=VARCHAR},
+      </if>
+      <if test="latitud != null" >
+        #{latitud,jdbcType=DOUBLE},
+      </if>
+      <if test="longitud != null" >
+        #{longitud,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

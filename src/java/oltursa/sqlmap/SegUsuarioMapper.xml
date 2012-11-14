@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="oltursa.dao.SegUsuarioMapper" >
+  <resultMap id="BaseResultMap" type="oltursa.model.SegUsuario" >
+    <id column="co_usuario" property="co_usuario" jdbcType="CHAR" />
+    <result column="de_usuario" property="de_usuario" jdbcType="VARCHAR" />
+    <result column="de_cargo" property="de_cargo" jdbcType="VARCHAR" />
+    <result column="fe_creacion" property="fe_creacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuariocreacion" property="co_usuariocreacion" jdbcType="VARCHAR" />
+    <result column="fe_modificacion" property="fe_modificacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuariomodificacion" property="co_usuariomodificacion" jdbcType="VARCHAR" />
+    <result column="fe_eliminacion" property="fe_eliminacion" jdbcType="TIMESTAMP" />
+    <result column="co_usuarioeliminacion" property="co_usuarioeliminacion" jdbcType="VARCHAR" />
+    <result column="co_claveacceso" property="co_claveacceso" jdbcType="VARCHAR" />
+    <result column="st_dscto_cargo" property="st_dscto_cargo" jdbcType="CHAR" />
+    <result column="pc_dscto_cargo" property="pc_dscto_cargo" jdbcType="NUMERIC" />
+    <result column="co_usuarioanterior" property="co_usuarioanterior" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    co_usuario, de_usuario, de_cargo, fe_creacion, co_usuariocreacion, fe_modificacion, 
+    co_usuariomodificacion, fe_eliminacion, co_usuarioeliminacion, co_claveacceso, st_dscto_cargo, 
+    pc_dscto_cargo, co_usuarioanterior
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Seg_Usuario
+    where co_usuario = #{co_usuario,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Seg_Usuario
+    where co_usuario = #{co_usuario,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="oltursa.model.SegUsuario" >
+    insert into Seg_Usuario (co_usuario, de_usuario, de_cargo, 
+      fe_creacion, co_usuariocreacion, fe_modificacion, 
+      co_usuariomodificacion, fe_eliminacion, 
+      co_usuarioeliminacion, co_claveacceso, 
+      st_dscto_cargo, pc_dscto_cargo, co_usuarioanterior
+      )
+    values (#{co_usuario,jdbcType=CHAR}, #{de_usuario,jdbcType=VARCHAR}, #{de_cargo,jdbcType=VARCHAR}, 
+      #{fe_creacion,jdbcType=TIMESTAMP}, #{co_usuariocreacion,jdbcType=VARCHAR}, #{fe_modificacion,jdbcType=TIMESTAMP}, 
+      #{co_usuariomodificacion,jdbcType=VARCHAR}, #{fe_eliminacion,jdbcType=TIMESTAMP}, 
+      #{co_usuarioeliminacion,jdbcType=VARCHAR}, #{co_claveacceso,jdbcType=VARCHAR}, 
+      #{st_dscto_cargo,jdbcType=CHAR}, #{pc_dscto_cargo,jdbcType=NUMERIC}, #{co_usuarioanterior,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="oltursa.model.SegUsuario" >
+    insert into Seg_Usuario
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="co_usuario != null" >
+        co_usuario,
+      </if>
+      <if test="de_usuario != null" >
+        de_usuario,
+      </if>
+      <if test="de_cargo != null" >
+        de_cargo,
+      </if>
+      <if test="fe_creacion != null" >
+        fe_creacion,
+      </if>
+      <if test="co_usuariocreacion != null" >
+        co_usuariocreacion,
+      </if>
+      <if test="fe_modificacion != null" >
+        fe_modificacion,
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        co_usuariomodificacion,
+      </if>
+      <if test="fe_eliminacion != null" >
+        fe_eliminacion,
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        co_usuarioeliminacion,
+      </if>
+      <if test="co_claveacceso != null" >
+        co_claveacceso,
+      </if>
+      <if test="st_dscto_cargo != null" >
+        st_dscto_cargo,
+      </if>
+      <if test="pc_dscto_cargo != null" >
+        pc_dscto_cargo,
+      </if>
+      <if test="co_usuarioanterior != null" >
+        co_usuarioanterior,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="co_usuario != null" >
+        #{co_usuario,jdbcType=CHAR},
+      </if>
+      <if test="de_usuario != null" >
+        #{de_usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="de_cargo != null" >
+        #{de_cargo,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_creacion != null" >
+        #{fe_creacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariocreacion != null" >
+        #{co_usuariocreacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_modificacion != null" >
+        #{fe_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        #{co_usuariomodificacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_eliminacion != null" >
+        #{fe_eliminacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        #{co_usuarioeliminacion,jdbcType=VARCHAR},
+      </if>
+      <if test="co_claveacceso != null" >
+        #{co_claveacceso,jdbcType=VARCHAR},
+      </if>
+      <if test="st_dscto_cargo != null" >
+        #{st_dscto_cargo,jdbcType=CHAR},
+      </if>
+      <if test="pc_dscto_cargo != null" >
+        #{pc_dscto_cargo,jdbcType=NUMERIC},
+      </if>
+      <if test="co_usuarioanterior != null" >
+        #{co_usuarioanterior,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="oltursa.model.SegUsuario" >
+    update Seg_Usuario
+    <set >
+      <if test="de_usuario != null" >
+        de_usuario = #{de_usuario,jdbcType=VARCHAR},
+      </if>
+      <if test="de_cargo != null" >
+        de_cargo = #{de_cargo,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_creacion != null" >
+        fe_creacion = #{fe_creacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariocreacion != null" >
+        co_usuariocreacion = #{co_usuariocreacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_modificacion != null" >
+        fe_modificacion = #{fe_modificacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuariomodificacion != null" >
+        co_usuariomodificacion = #{co_usuariomodificacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fe_eliminacion != null" >
+        fe_eliminacion = #{fe_eliminacion,jdbcType=TIMESTAMP},
+      </if>
+      <if test="co_usuarioeliminacion != null" >
+        co_usuarioeliminacion = #{co_usuarioeliminacion,jdbcType=VARCHAR},
+      </if>
+      <if test="co_claveacceso != null" >
+        co_claveacceso = #{co_claveacceso,jdbcType=VARCHAR},
+      </if>
+      <if test="st_dscto_cargo != null" >
+        st_dscto_cargo = #{st_dscto_cargo,jdbcType=CHAR},
+      </if>
+      <if test="pc_dscto_cargo != null" >
+        pc_dscto_cargo = #{pc_dscto_cargo,jdbcType=NUMERIC},
+      </if>
+      <if test="co_usuarioanterior != null" >
+        co_usuarioanterior = #{co_usuarioanterior,jdbcType=CHAR},
+      </if>
+    </set>
+    where co_usuario = #{co_usuario,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="oltursa.model.SegUsuario" >
+    update Seg_Usuario
+    set de_usuario = #{de_usuario,jdbcType=VARCHAR},
+      de_cargo = #{de_cargo,jdbcType=VARCHAR},
+      fe_creacion = #{fe_creacion,jdbcType=TIMESTAMP},
+      co_usuariocreacion = #{co_usuariocreacion,jdbcType=VARCHAR},
+      fe_modificacion = #{fe_modificacion,jdbcType=TIMESTAMP},
+      co_usuariomodificacion = #{co_usuariomodificacion,jdbcType=VARCHAR},
+      fe_eliminacion = #{fe_eliminacion,jdbcType=TIMESTAMP},
+      co_usuarioeliminacion = #{co_usuarioeliminacion,jdbcType=VARCHAR},
+      co_claveacceso = #{co_claveacceso,jdbcType=VARCHAR},
+      st_dscto_cargo = #{st_dscto_cargo,jdbcType=CHAR},
+      pc_dscto_cargo = #{pc_dscto_cargo,jdbcType=NUMERIC},
+      co_usuarioanterior = #{co_usuarioanterior,jdbcType=CHAR}
+    where co_usuario = #{co_usuario,jdbcType=CHAR}
+  </update>
+</mapper>
